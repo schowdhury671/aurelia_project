@@ -243,21 +243,65 @@ combined with geographical and cultural knowledge.
 </div>
 </section>
     <!--/ TL;DR. -->
+
+
+  
+
+
+<section class="section"  style="background-color:#efeff081">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">
+            <h2 class="title is-3">🔥Highlights</h2>
+            <div class="content has-text-justified">
+              Key contributions of AURELIA:: 
+    
+              <ol type="1">
+                <li>We present <b>AURELIA</b>, a scalable and automated pipeline
+                  for generating high-quality Audio-Visual reasoning data,
+                  serving as both an evaluation resource and to the best of
+                  our knowledge, the first training-free reasoning distillation
+                  framework for Audio Visual LLMs</li><br>
+                  
+                <li>Leveraging our proposed reasoning data generation
+                  pipeline, we introduce <b>AVReasonBench</b>, a comprehensive
+                  AV benchmark featuring 4500 audio-visual samples with
+                  detailed step-by-step reasoning solutions across six diverse
+                  tasks, encompassing multimodal commonsense reasoning,
+                  music comprehension, and humor detection. Additionally, as a part of our benchmark, we introduce a novel
+                  task <b>AV-GeoIQ</b> for geographical understanding and curate 1000 AV-Compositional and 100 AV-Meme understanding
+                  samples through careful manual inspection.</li><br>
+                <li>Leveraging our curated reasoning dataset, we demonstrate
+                  up to 100% relative improvement in AVLLM performance
+                  through zero-shot reasoning distillation, demonstrating the
+                  effectiveness of our approach in enhancing the reasoning
+                  capabilities of AV models.</li><br>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
 	
   <section class="columns is-vcentered interpolation-panel" width=100%>
   <div class="container is-max-desktop">
     <div class="hero-body" style='margin-top:-25px;margin-bottom:-25px'>
 	<center>
-      <h2 class="title is-3">MelFusion Framework</h2>
-      <img src="./static/images/Main_System.png"
+      <h2 class="title is-3">AURELIA Framework</h2>
+      <img src="./static/images/Main_Diagram.png"
                  class="interpolation-image" width=80%/></center>
       <p class="content has-text-justified">
-		Our approach MeLFusion generates music waveform $w$ conditioned on an image $I$ and a given textual instruction $Y$. 
-		Visual semantics from  $I$ is instilled into a text-to-music diffusion model (bottom green box) using a pre-trained and frozen text-to-image diffusion model (top blue box). 
-		The image $I$ is first DDIM inverted into a noisy latent $z^I_T$. The self-attention features from the decoder layers of the text-to-image LDM that consumes $z^I_T$ is infused into the cross-attention features of text-to-music LDM decoder layers, modulated by learned $\alpha$ parameters. 
-        This fusion operation that happens in the decoder (green stripes) is detailed on the right side of the figure. 
-		The music encoder projects the spectrogram representation of the music to the latent space, and the music decoder retrieves back the spectrograms. Finally, a vocoder generates the waveform $w$ from the spectrograms. 
-		Please refer to Section 3 in the manuscript for more details.
+        <b>AURELIA</b> consists of a multi-agent interactive framework that functions in sync and
+        generates reasoning steps that are then distilled inside the target model. The input set consisting of the audio, video, and question is first fed
+        into the reasoning generator agent, which generates an initial set of reasoning steps that provide a structured pathway to reach the final
+        answer. These reasoning steps are synthesized into a detailed caption by a Summarizer agent. The Evaluator agent then outputs a score that
+        measures the relevance of the caption with the input audio and video. A feedback mechanism then provides supervision to the Reasoning
+        generator based on the evaluation score, which adjusts its output to maximize the evaluation score. This actor-critique framework continues
+        until the evaluation score exceeds a specific threshold or the number of iterations are exhausted.
       </p>
     </div>
   </div>
